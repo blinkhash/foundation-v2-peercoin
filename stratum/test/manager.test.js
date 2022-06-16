@@ -3,7 +3,7 @@ const config = require('../../configs/example');
 const configMain = require('../../configs/main');
 const testdata = require('../../daemon/test/daemon.mock');
 
-config.primary.address = 'bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq';
+config.primary.address = 'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdb';
 config.primary.recipients = [];
 
 ////////////////////////////////////////////////////////////////////////////////

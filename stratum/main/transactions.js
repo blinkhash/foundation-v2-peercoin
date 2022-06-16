@@ -10,30 +10,30 @@ const Transactions = function(config) {
 
   // Mainnet Configuration
   this.configMainnet = {
-    bech32: 'bc',
+    bech32: 'pc',
     bip32: {
       public: Buffer.from('0488B21E', 'hex').readUInt32LE(0),
       private: Buffer.from('0488ADE4', 'hex').readUInt32LE(0),
     },
-    peerMagic: 'f9beb4d9',
-    pubKeyHash: Buffer.from('00', 'hex').readUInt8(0),
-    scriptHash: Buffer.from('05', 'hex').readUInt8(0),
-    wif: Buffer.from('80', 'hex').readUInt8(0),
-    coin: 'btc',
+    peerMagic: 'e6e8e9e5',
+    pubKeyHash: Buffer.from('37', 'hex').readUInt8(0),
+    scriptHash: Buffer.from('75', 'hex').readUInt8(0),
+    wif: Buffer.from('B7', 'hex').readUInt8(0),
+    coin: 'ppc',
   };
 
   // Testnet Configuration
   this.configTestnet = {
-    bech32: 'tb',
+    bech32: 'tpc',
     bip32: {
       public: Buffer.from('043587CF', 'hex').readUInt32LE(0),
       private: Buffer.from('04358394', 'hex').readUInt32LE(0),
     },
-    peerMagic: '0b110907',
+    peerMagic: 'cbf2c0ef',
     pubKeyHash: Buffer.from('6F', 'hex').readUInt8(0),
     scriptHash: Buffer.from('C4', 'hex').readUInt8(0),
     wif: Buffer.from('EF', 'hex').readUInt8(0),
-    coin: 'btc',
+    coin: 'ppc',
   };
 
   // Calculate Generation Transaction
@@ -45,7 +45,7 @@ const Transactions = function(config) {
     const txInPrevOutIndex = Math.pow(2, 32) - 1;
     const txOutputBuffers = [];
 
-    let txVersion = 4;
+    let txVersion = 2;
     const network = !_this.config.settings.testnet ?
       _this.configMainnet :
       _this.configTestnet;
@@ -86,6 +86,7 @@ const Transactions = function(config) {
     // Build First Part of Generation Transaction
     const p1 = Buffer.concat([
       utils.packUInt32LE(txVersion),
+      utils.packUInt32LE(rpcData.curtime),
       utils.varIntBuffer(1),
       utils.uint256BufferFromHash(txInPrevOutHash),
       utils.packUInt32LE(txInPrevOutIndex),
