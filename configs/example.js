@@ -52,6 +52,7 @@ config.primary.address = '[address]';
 config.primary.coin = {};
 config.primary.coin.name = 'Peercoin';
 config.primary.coin.symbol = 'PPC';
+config.primary.coin.algorithm = 'sha256d';
 
 // Daemon Configuration
 config.primary.daemons = [];
