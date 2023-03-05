@@ -2945,19 +2945,20 @@ describe('Test pool functionality', () => {
       round: '15c8343c-9751-4c67-aafa-29ff296da484',
       solo: false,
       stale: 0,
-      times: 276.95300000000003,
+      times: 553.906,
       type: 'primary',
-      valid: 22,
-      work: 29.489361720000005
+      valid: 44,
+      work: 58.9787234
     };
     const worker2 = JSON.parse(JSON.stringify(worker1));
     worker2.miner = 'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdc';
     worker2.worker = 'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdc.worker4';
     worker2.times = 49.1;
+    worker2.work = 29.489361720000005;
     const expected = {
-      'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdb': { 'immature': 9570.00569668, 'generate': 0 },
-      'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdc': { 'immature': 429.99430332, 'generate': 0 }};
-    pool.handlePrimaryWorkers([blocks1], [[worker1, worker1, worker2]], false, (results) => {
+      'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdb': { 'immature': 9570.0056964, 'generate': 0 },
+      'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdc': { 'immature': 429.9943036, 'generate': 0 }};
+    pool.handlePrimaryWorkers([blocks1], [[worker1, worker2]], false, (results) => {
       expect(results).toStrictEqual(expected);
     });
   });
@@ -3547,19 +3548,20 @@ describe('Test pool functionality', () => {
       round: '15c8343c-9751-4c67-aafa-29ff296da484',
       solo: false,
       stale: 0,
-      times: 276.95300000000003,
-      type: 'auxiliary',
-      valid: 22,
-      work: 29.489361720000005
+      times: 553.906,
+      type: 'primary',
+      valid: 44,
+      work: 58.9787234
     };
     const worker2 = JSON.parse(JSON.stringify(worker1));
     worker2.miner = 'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdc';
     worker2.worker = 'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdc.worker4';
     worker2.times = 49.1;
+    worker2.work = 29.489361720000005;
     const expected = {
-      'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdb': { 'immature': 9570.00569668, 'generate': 0 },
-      'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdc': { 'immature': 429.99430332, 'generate': 0 }};
-    pool.handleAuxiliaryWorkers([blocks1], [[worker1, worker1, worker2]], false, (results) => {
+      'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdb': { 'immature': 9570.0056964, 'generate': 0 },
+      'P9iJda86q6tWdHYsBXZGPGcxu5PYFGJDdc': { 'immature': 429.9943036, 'generate': 0 }};
+    pool.handleAuxiliaryWorkers([blocks1], [[worker1, worker2]], false, (results) => {
       expect(results).toStrictEqual(expected);
     });
   });
